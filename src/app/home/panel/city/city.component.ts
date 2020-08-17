@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -9,9 +9,11 @@ import { NgForm } from '@angular/forms';
 export class CityComponent implements OnInit {
   @Output() passCity = new EventEmitter<string>();
   @Output() closeInput = new EventEmitter();
+  @Input() error:boolean;
   constructor() { }
 
   ngOnInit() {
+    console.log(this.error);
   }
 
   passData(cityForm:NgForm){

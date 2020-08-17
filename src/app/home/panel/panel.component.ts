@@ -12,6 +12,7 @@ export class PanelComponent implements OnInit {
   showInput:boolean=false;
   showWeatherData:boolean=false;
   showPlus:boolean=false;
+  errorFlag:boolean=false;
   @Input('model') cityWeather:WeatherModel;
   @Output() passCityWeatherData = new EventEmitter<WeatherModel>();
   faPen = faPen;
@@ -44,14 +45,23 @@ export class PanelComponent implements OnInit {
       this.showInput=false;
       this.showWeatherData=true;
       this.showPlus=false;
-    });
+    },
+    err => {
+      console.log(err)
+      if(err.error.cod=='404'){
+        console.log('City Not Found');
+        this.errorFlag=true;
+      }
+    }
+    );
+    ;
 
   }
   getImagePath(climate){
     console.log(climate);
     if(climate.toLowerCase().includes('clouds')){
       return './assets/img/cloudy.png';
-    } else if(climate.toLowerCase().includes('rain')){
+    } else if(climate.toLowerCase().includes('rain') || climate.toLowerCase().includes('drizzle')){
       return './assets/img/rainy.png';
     } else if(climate.toLowerCase().includes('sunny') | climate.toLowerCase().includes('clear')){
       return './assets/img/sunny.png';
@@ -68,6 +78,7 @@ export class PanelComponent implements OnInit {
 
   hideInput(){
     this.showInput=false;
+    this.errorFlag=false;
     if(this.cityWeather.cityName == ""){
       this.showPlus=true;
       this.showWeatherData=false;

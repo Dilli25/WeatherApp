@@ -1,31 +1,31 @@
 <div class="container">
     <div class="card">
-        <div class="card-body" >
-           
-            
-            <div *ngIf="showPlus" class="plus bg-light" (click)="callInput()">
-               <span class="align-middle">+</span>
+        <div class="card-body">
+            <div *ngIf="showPlus" class="plus" (click)="callInput()">
+                <span class="align-middle">+</span>
             </div>
-            <div *ngIf="showInput" class="bg-light">
-                <app-city (closeInput)="hideInput()" (passCity)="getCityValue($event)"></app-city>
+            <div *ngIf="showInput" class="bg-white">
+                <app-city [error]="errorFlag" (closeInput)="hideInput()" (passCity)="getCityValue($event)"></app-city>
             </div>
-            <div *ngIf="showWeatherData" class="weather-content d-flex bg-light">
+            <div *ngIf="showWeatherData" class="weather-content d-flex bg-white">
 
                 <div class="w-50 data-position">
+
+
+                    <div class="d-flex pl-2 h-100 flex-column justify-content-center blue-background">
+                        <div class="temperature-text">{{cityWeather.temperature | number}}<sup>o</sup>C</div>
+                        <div class="wind-text">{{cityWeather.windSpeed | number}} Kmph</div>
+                    </div>
+                    <div class="align-self-end location-position font-weight-bold">{{cityWeather.cityName | titlecase}}
+                    </div>
                     <div class="edit-icon">
-                        <fa-icon [icon]="faPen" (click)="callInput()"></fa-icon>
+                        <span (click)="callInput()">Edit</span>
                     </div>
-                    
-                    <div class="d-flex pl-3 h-100 flex-column justify-content-center ">
-                    <div>{{cityWeather.temperature | number}}<sup>o</sup>C</div>
-                    <div>{{cityWeather.windSpeed | number}} Kmph</div>
-                    </div>
-                    <div class="align-self-end location-position font-weight-bold">{{cityWeather.cityName}}</div>
                 </div>
                 <div class="bg-image w-50 " *ngIf="cityWeather.climate!=''">
                     <img [src]="getImagePath(cityWeather.climate)" alt="">
                 </div>
             </div>
         </div>
-      </div>
+    </div>
 </div>

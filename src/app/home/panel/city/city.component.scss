@@ -1,3 +1,14 @@
 .form-group{
     margin-bottom:0px;
 }
+.city-text{
+    color: #63a29a;
+}
+.city-error-text{
+    color:#eb3b3b;
+    font-size:10pt;
+    display: none;
+}
+.show-error-text{
+    display:block;
+}
