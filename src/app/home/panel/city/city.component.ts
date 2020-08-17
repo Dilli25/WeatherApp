@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
 })
 export class CityComponent implements OnInit {
   @Output() passCity = new EventEmitter<string>();
+  @Output() closeInput = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
@@ -17,6 +18,10 @@ export class CityComponent implements OnInit {
     const cityName=cityForm.form.controls.city.value;
     console.log(cityName);
     this.passCity.emit(cityName);   
+  }
+  cancel(){
+    console.log('cancel');
+    this.closeInput.emit();  
   }
 
 }
