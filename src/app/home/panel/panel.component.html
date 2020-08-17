@@ -1,12 +1,22 @@
 <div class="container">
-    <div class="card " style="width: 18rem;">
-        <!-- <img src="" class="card-img-top" alt="..."> -->
+    <div class="card">
         <div class="card-body" >
-            <div *ngIf="!showInput" class="plus bg-light" (click)="callInput()">
+           
+            
+            <div *ngIf="showPlus" class="plus bg-light" (click)="callInput()">
                <span class="align-middle">+</span>
             </div>
-            <div *ngIf="showInput">
+            <div *ngIf="showInput" class="bg-light">
                 <app-city (passCity)="getCityValue($event)"></app-city>
+            </div>
+            <div *ngIf="showWeatherData" class="weather-content d-flex">
+                <div class="w-50">
+                    <h4>{{cityWeather.temperature | number}}<sup>o</sup>C</h4>
+                    <h4>{{cityWeather.windSpeed | number}} Kmph</h4>
+                </div>
+                <div class="bg-image w-50" *ngIf="cityWeather.climate!=''">
+                    <img [src]="getImagePath(cityWeather.climate)" alt="">
+                </div>
             </div>
         </div>
       </div>
