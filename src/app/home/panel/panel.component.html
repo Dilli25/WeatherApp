@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="card " style="width: 18rem;">
+        <!-- <img src="" class="card-img-top" alt="..."> -->
+        <div class="card-body" >
+            <div *ngIf="!showInput" class="plus bg-light" (click)="callInput()">
+               <span class="align-middle">+</span>
+            </div>
+            <div *ngIf="showInput">
+                <app-city (passCity)="getCityValue($event)"></app-city>
+            </div>
+        </div>
+      </div>
+</div>

@@ -1,0 +1,9 @@
+<form #cityForm="ngForm" novalidate (ngSubmit)="passData(cityForm)">
+    <div class="form-group">
+  <label for="city">Name</label>
+  <input type="text" class="form-control"
+         required  ngModel
+         name="city">
+</div>
+<button type="submit" class="btn btn-primary" >Submit</button>
+</form>
