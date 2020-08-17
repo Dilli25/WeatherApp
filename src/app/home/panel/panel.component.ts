@@ -60,6 +60,9 @@ export class PanelComponent implements OnInit {
     } else if(climate.toLowerCase().includes('thunderstorm')){
       return './assets/img/thunderstrom.png';
     } 
+    else if(climate.toLowerCase().includes('mist')){
+      return './assets/img/mist.png';
+    } 
 
   }
 
