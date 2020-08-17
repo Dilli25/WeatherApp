@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
-import { WeatherModel } from 'src/app/models/weatherModel';
+import { WeatherModel } from '../../models/weatherModel';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
