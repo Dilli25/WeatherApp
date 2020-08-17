@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ApiService } from 'src/app/api.service';
+import { ApiService } from '../../api.service';
 import { WeatherModel } from '../../models/weatherModel';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 
