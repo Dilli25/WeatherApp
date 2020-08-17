@@ -1,16 +1,12 @@
 <div class="bg-white cityForm">
-<form #cityForm="ngForm" novalidate (ngSubmit)="passData(cityForm)">
-    <div class="form-group  w-75 m-auto" >
-  <label for="city" class="text-left font-weight-bold">City </label>
-  <input type="text" class="form-control "
-         required  ngModel
-         name="city">
-         <div class="d-flex justify-content-center p-3">
-            <button type="submit" class="btn btn-primary mr-2" >Submit</button>
-            <button (click)="cancel()" class="btn btn-primary " >Cancel</button>
-         </div>
-         
-</div>
-
-</form>
+    <form #cityForm="ngForm" novalidate (ngSubmit)="passData(cityForm)">
+        <div class="form-group  w-75 m-auto">
+            <label for="city" class="text-left font-weight-bold">City </label>
+            <input type="text" class="form-control " required ngModel name="city">
+            <div class="d-flex justify-content-center p-3">
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                <button (click)="cancel()" class="btn btn-primary ">Cancel</button>
+            </div>
+        </div>
+    </form>
 </div>

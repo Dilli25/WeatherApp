@@ -11,7 +11,7 @@ import { faPen } from '@fortawesome/free-solid-svg-icons';
 export class PanelComponent implements OnInit {
   showInput:boolean=false;
   showWeatherData:boolean=false;
-  showPlus:boolean=true;
+  showPlus:boolean=false;
   @Input('model') cityWeather:WeatherModel;
   @Output() passCityWeatherData = new EventEmitter<WeatherModel>();
   faPen = faPen;
@@ -19,10 +19,12 @@ export class PanelComponent implements OnInit {
   
   ngOnInit() {
     console.log(this.cityWeather);
-    if(this.cityWeather.cityName!=""){
-      this.showPlus=false;
-      this.showWeatherData=false;
+    if(this.cityWeather.cityName==""){
+      this.showPlus=true;
+    }else{
+      this.showWeatherData=true;
     }
+
   }
   callInput(){
     this.showPlus=false;
@@ -35,6 +37,7 @@ export class PanelComponent implements OnInit {
       console.log(data);
       this.cityWeather.cityName=cityName;
       this.cityWeather.climate=data['weather']['0'].main;
+      this.cityWeather.cityId=data.id;
       this.cityWeather.windSpeed=(data['wind'].speed * 1.16).toString();
       this.cityWeather.temperature= (data['main'].temp - 273).toString();
       this.passCityWeatherData.emit(this.cityWeather);
