@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { WeatherModel } from '../models/weatherModel';
 import { Data } from '@angular/router';
 import { ApiService } from '../api.service';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 import { Timestamp } from 'rxjs';
 import { Time } from '@angular/common';
 
