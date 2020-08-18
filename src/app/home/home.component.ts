@@ -3,6 +3,8 @@ import { WeatherModel } from '../models/weatherModel';
 import { Data } from '@angular/router';
 import { ApiService } from '../api.service';
 import { environment } from 'src/environments/environment';
+import { Timestamp } from 'rxjs';
+import { Time } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +16,7 @@ export class HomeComponent implements OnInit {
   tempWeatherData: WeatherModel[] = [];
   id:any;
   panelCount:number=environment.panelCount;
+  updatedDataTime:string;
 
   constructor(private weatherService:ApiService) {
     for (let i = 0; i < this.panelCount; i++) {
@@ -25,6 +28,7 @@ export class HomeComponent implements OnInit {
     const storedData = this.getFromStorage();
     if(storedData != null ){
       this.weatherData = JSON.parse(storedData);
+      this.updatedDataTime= (new Date()).toString();
       this.triggerSchedule();
     }else{
       this.weatherData=  this.tempWeatherData;
@@ -34,6 +38,7 @@ export class HomeComponent implements OnInit {
     this.weatherData.forEach((item, index) => {
       if (item.id == cityWeatherData.id)
         this.weatherData[index] = cityWeatherData;
+        this.updatedDataTime= (new Date()).toString();
     })
     this.callIntervalMethod();
     this.storeWeatherData();
@@ -55,6 +60,7 @@ export class HomeComponent implements OnInit {
             oldObject.climate=updatedObject['weather']['0'].main;
             oldObject.windSpeed=(updatedObject['wind'].speed * 1.16).toString();
             oldObject.temperature= (updatedObject['main'].temp - 273).toString();
+            this.updatedDataTime= (new Date()).toString();
           }
 
         });
