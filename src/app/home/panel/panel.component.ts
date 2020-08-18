@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { WeatherModel } from '../../models/weatherModel';
-import { faPen } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-panel',
@@ -15,7 +14,6 @@ export class PanelComponent implements OnInit {
   errorFlag: boolean = false;
   @Input('model') cityWeather: WeatherModel;
   @Output() passCityWeatherData = new EventEmitter<WeatherModel>();
-  faPen = faPen;
   constructor(private weatherService: ApiService) { }
 
   ngOnInit() {
