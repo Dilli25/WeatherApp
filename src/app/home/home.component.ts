@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { WeatherModel } from '../models/weatherModel';
 import { Data } from '@angular/router';
 import { ApiService } from '../api.service';
@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   id:any;
   panelCount:number=environment.panelCount;
   updatedDataTime:string;
+  showTime:boolean=false;
 
   constructor(private weatherService:ApiService) {
     for (let i = 0; i < this.panelCount; i++) {
@@ -26,12 +27,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     const storedData = this.getFromStorage();
+    
     if(storedData != null ){
       this.weatherData = JSON.parse(storedData);
       this.updatedDataTime= (new Date()).toString();
       this.triggerSchedule();
+      this.showTime=true;
     }else{
       this.weatherData=  this.tempWeatherData;
+      this.showTime=false;
     }
   }
   getCityWeatherData(cityWeatherData) {
@@ -39,6 +43,7 @@ export class HomeComponent implements OnInit {
       if (item.id == cityWeatherData.id)
         this.weatherData[index] = cityWeatherData;
         this.updatedDataTime= (new Date()).toString();
+        this.showTime=true;
     })
     this.callIntervalMethod();
     this.storeWeatherData();
