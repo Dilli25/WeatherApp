@@ -6,23 +6,18 @@ import { NgForm } from '@angular/forms';
   templateUrl: './city.component.html',
   styleUrls: ['./city.component.scss']
 })
-export class CityComponent implements OnInit {
+export class CityComponent{
   @Output() passCity = new EventEmitter<string>();
   @Output() closeInput = new EventEmitter();
   @Input() error:boolean;
   constructor() { }
 
-  ngOnInit() {
-    console.log(this.error);
-  }
 
   passData(cityForm:NgForm){
     const cityName=cityForm.form.controls.city.value;
-    console.log(cityName);
     this.passCity.emit(cityName);   
   }
   cancel(){
-    console.log('cancel');
     this.closeInput.emit();  
   }
 

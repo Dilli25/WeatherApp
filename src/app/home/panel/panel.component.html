@@ -8,10 +8,7 @@
                 <app-city [error]="errorFlag" (closeInput)="hideInput()" (passCity)="getCityValue($event)"></app-city>
             </div>
             <div *ngIf="showWeatherData" class="weather-content d-flex bg-white">
-
                 <div class="w-50 data-position">
-
-
                     <div class="d-flex pl-2 h-100 flex-column justify-content-center blue-background">
                         <div class="temperature-text">{{cityWeather.temperature | number}}<sup>o</sup>C</div>
                         <div class="wind-text">{{cityWeather.windSpeed | number}} Kmph</div>

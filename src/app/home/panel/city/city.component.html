@@ -2,7 +2,7 @@
     <form #cityForm="ngForm" novalidate (ngSubmit)="passData(cityForm)">
         <div class="form-group  w-75 m-auto">
             <label for="city" class="text-left font-weight-bold city-text">City </label>
-            <input type="text" class="form-control " required ngModel name="city" >
+            <input type="text" class="form-control " required ngModel name="city">
             <span [ngClass]="{'show-error-text' : error}" class="city-error-text">City Not Found</span>
             <div class="d-flex justify-content-center p-1">
                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
